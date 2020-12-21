@@ -1,6 +1,8 @@
 import React, {useRef} from 'react';
 
-const NewTodo:React.FC = () => {
+import { NewTodoProps } from './../todo.model'
+
+const NewTodo:React.FC<NewTodoProps> = (props) => {
 
     const textInputRef = useRef<HTMLInputElement>(null);
 
@@ -8,6 +10,7 @@ const NewTodo:React.FC = () => {
         event.preventDefault();
         const enteredText = textInputRef.current!.value
         console.log(enteredText);
+        props.onAddTodo(enteredText)
     }
 
     return (
